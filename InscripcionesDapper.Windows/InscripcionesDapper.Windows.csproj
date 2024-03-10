@@ -1,0 +1,180 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{109D912C-B586-42A4-A6D9-1E72212DFA67}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>InscripcionesDapper.Windows</RootNamespace>
+    <AssemblyName>InscripcionesDapper.Windows</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>
+    </StartupObject>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="frmAlumnos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAlumnos.Designer.cs">
+      <DependentUpon>frmAlumnos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmAlumnoAE.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAlumnoAE.Designer.cs">
+      <DependentUpon>frmAlumnoAE.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmAlumnosCursadasAE.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAlumnosCursadasAE.Designer.cs">
+      <DependentUpon>frmAlumnosCursadasAE.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmCarreraAe.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCarreraAe.Designer.cs">
+      <DependentUpon>frmCarreraAe.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmCarreras.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCarreras.Designer.cs">
+      <DependentUpon>frmCarreras.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmCursadaAE.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCursadaAE.Designer.cs">
+      <DependentUpon>frmCursadaAE.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmDetalleCursada.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDetalleCursada.Designer.cs">
+      <DependentUpon>frmDetalleCursada.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmNavegacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmNavegacion.Designer.cs">
+      <DependentUpon>frmNavegacion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmTurnos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTurnos.Designer.cs">
+      <DependentUpon>frmTurnos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmTurnosAE.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTurnosAE.Designer.cs">
+      <DependentUpon>frmTurnosAE.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers\CombosHelper.cs" />
+    <Compile Include="Helpers\GridHelper.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="frmAlumnos.resx">
+      <DependentUpon>frmAlumnos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAlumnoAE.resx">
+      <DependentUpon>frmAlumnoAE.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAlumnosCursadasAE.resx">
+      <DependentUpon>frmAlumnosCursadasAE.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmCarreraAe.resx">
+      <DependentUpon>frmCarreraAe.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmCarreras.resx">
+      <DependentUpon>frmCarreras.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmCursadaAE.resx">
+      <DependentUpon>frmCursadaAE.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDetalleCursada.resx">
+      <DependentUpon>frmDetalleCursada.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmNavegacion.resx">
+      <DependentUpon>frmNavegacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTurnos.resx">
+      <DependentUpon>frmTurnos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTurnosAE.resx">
+      <DependentUpon>frmTurnosAE.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\InscripcionesDapper.Entidades\InscripcionesDapper.Entidades.csproj">
+      <Project>{B8E1F57C-B23D-496A-943C-8E4E4DF8B794}</Project>
+      <Name>InscripcionesDapper.Entidades</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\InscripcionesDapper.Servicios\InscripcionesDapper.Servicios.csproj">
+      <Project>{49DBA969-8431-48D3-86E1-35AD87FBE77F}</Project>
+      <Name>InscripcionesDapper.Servicios</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
