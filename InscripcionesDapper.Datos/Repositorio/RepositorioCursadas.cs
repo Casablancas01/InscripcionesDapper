@@ -65,7 +65,7 @@ namespace InscripcionesDapper.Datos.Repositorio
 
         public CursadaDto Get(int cursadaId)
         {
-            string Query = "SELECT c.CursadaId,c.FechaInicio,c.FechaFinal,c.CantidadAlumnos,t.DescripcionTurno,cc.NombreCarrera FROM Cursadas c " +
+            string Query = "SELECT c.CursadaId,c.FechaInicio,c.FechaFinal,c.CantidadAlumnos,t.TurnoId,t.DescripcionTurno,cc.CarreraId,cc.NombreCarrera FROM Cursadas c " +
                    "INNER JOIN Turnos t ON c.TurnoId=t.TurnoId " +
                    "INNER JOIN Carreras cc on c.CarreraId= cc.CarreraId " +
                    "WHERE c.CursadaId = @cursadaId";
@@ -76,7 +76,7 @@ namespace InscripcionesDapper.Datos.Repositorio
         public List<CursadaDto> GetAll()
         {
               List<CursadaDto> lista = new List<CursadaDto>();           
-                string Query = "SELECT c.CursadaId,c.FechaInicio,c.FechaFinal,c.CantidadAlumnos,t.DescripcionTurno,cc.NombreCarrera FROM Cursadas c " +
+                string Query = "SELECT c.CursadaId,c.FechaInicio,c.FechaFinal,c.CantidadAlumnos,t.TurnoId,t.DescripcionTurno,cc.CarreraId,cc.NombreCarrera FROM Cursadas c " +
                    "INNER JOIN Turnos t ON c.TurnoId=t.TurnoId " +
                    "INNER JOIN Carreras cc on c.CarreraId= cc.CarreraId";
                  lista = _transaction.Connection.Query<CursadaDto>(Query, transaction: _transaction).ToList();
@@ -91,6 +91,20 @@ namespace InscripcionesDapper.Datos.Repositorio
             var cantidad = _transaction.Connection.ExecuteScalar<int>(selectQuery, new { CursadaId = cursadaId }, transaction: _transaction);
             return cantidad;
                 
+        }
+
+        public void Guardar(Cursada cursada)
+        {
+            string insertQuery = "UPDATE Cursadas " +
+                     "SET FechaInicio = @FechaInicio, " +
+                     "    FechaFinal = @FechaFinal, " +
+                     "    CantidadAlumnos = @CantidadAlumnos, " +
+                     "    TurnoId = @TurnoId, " +
+                     "    CarreraId = @CarreraId " +
+                     "WHERE CursadaId = @CursadaId";
+            
+            _transaction.Connection.Execute(insertQuery, cursada, transaction: _transaction);
+            
         }
     }
 }

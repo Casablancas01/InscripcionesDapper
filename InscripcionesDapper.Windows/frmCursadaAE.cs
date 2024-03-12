@@ -1,4 +1,5 @@
 ﻿using InscripcionesDapper.Entidades;
+using InscripcionesDapper.Entidades.Dtos;
 using InscripcionesDapper.Entidades.Entidades;
 using InscripcionesDapper.Servicios.Interfaces;
 using InscripcionesDapper.Servicios.Servicios;
@@ -21,11 +22,20 @@ namespace InscripcionesDapper.Windows
     {
         private readonly ServiciosCursadas _servicioCursadas;
         private Cursada cursada;
+        private CursadaDto cursadaDto;
         private bool esEdicion = false;
         public frmCursadaAE(ServiciosCursadas servicioCursadas)
         {
             InitializeComponent();
             _servicioCursadas = servicioCursadas;
+        }
+        public CursadaDto GetProveedor()
+        {
+            return cursadaDto;
+        }
+        public void SetCursada(CursadaDto cursadaDto)
+        {
+            this.cursadaDto = cursadaDto;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -49,10 +59,11 @@ namespace InscripcionesDapper.Windows
 
                     if (!_servicioCursadas.Existe(cursada))
                     {
-                        _servicioCursadas.Guardar(cursada);
+                        
 
                         if (!esEdicion)
                         {
+                            _servicioCursadas.Agregar(cursada);
                             MessageBox.Show("Registro agregado",
                         "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             DialogResult dr = MessageBox.Show("¿Desea agregar otro registro?",
@@ -70,10 +81,11 @@ namespace InscripcionesDapper.Windows
                         }
                         else
                         {
+                            cursada.CursadaId = cursadaDto.CursadaId;
+                            _servicioCursadas.Guardar(cursada);
                             MessageBox.Show("Registro editado", "Mensaje",
                                 MessageBoxButtons.OK, MessageBoxIcon.Information);
                             DialogResult = DialogResult.OK;
-
                         }
                     }
                     else
@@ -126,10 +138,20 @@ namespace InscripcionesDapper.Windows
             return valido;
         }
 
-        private void frmCursadaAE_Load(object sender, EventArgs e)
+        protected override void OnLoad(EventArgs e)
         {
             CombosHelper.CargarComboTurnos(ref comboBox1);
             CombosHelper.CargarComboCarreras(ref comboBox2);
+            base.OnLoad(e);
+            if (cursadaDto != null)
+            {
+                esEdicion = true;
+                dateTimePicker1.Value = cursadaDto.FechaInicio;
+                dateTimePicker2.Value = cursadaDto.FechaFinal;
+                textBox1.Text = Convert.ToString(cursadaDto.CantidadAlumnos);
+                comboBox1.SelectedValue = cursadaDto.TurnoId;
+                comboBox2.SelectedValue = cursadaDto.CarreraId;
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)

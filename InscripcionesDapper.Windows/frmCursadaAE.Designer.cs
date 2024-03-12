@@ -50,7 +50,7 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(12, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(82, 16);
+            this.label1.Size = new System.Drawing.Size(86, 17);
             this.label1.TabIndex = 0;
             this.label1.Text = "Fecha Inicial";
             // 
@@ -59,7 +59,7 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(12, 46);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(77, 16);
+            this.label2.Size = new System.Drawing.Size(81, 17);
             this.label2.TabIndex = 0;
             this.label2.Text = "Fecha Final";
             // 
@@ -68,7 +68,7 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(12, 95);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(172, 16);
+            this.label3.Size = new System.Drawing.Size(182, 17);
             this.label3.TabIndex = 0;
             this.label3.Text = "Cantidad Total de Alumnos ";
             // 
@@ -77,7 +77,7 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(12, 139);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(42, 16);
+            this.label4.Size = new System.Drawing.Size(46, 17);
             this.label4.TabIndex = 0;
             this.label4.Text = "Turno";
             // 
@@ -86,7 +86,7 @@
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(12, 185);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(52, 16);
+            this.label5.Size = new System.Drawing.Size(56, 17);
             this.label5.TabIndex = 0;
             this.label5.Text = "Carrera";
             // 
@@ -170,7 +170,6 @@
             this.Controls.Add(this.label1);
             this.Name = "frmCursadaAE";
             this.Text = "frmCursadaAE";
-            this.Load += new System.EventHandler(this.frmCursadaAE_Load);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

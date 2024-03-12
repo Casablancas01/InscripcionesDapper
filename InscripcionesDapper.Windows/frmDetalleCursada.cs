@@ -28,7 +28,7 @@ namespace InscripcionesDapper.Windows
             
             _servicioCursadas= new ServiciosCursadas();
         }
-
+        private bool esEdicion = false;
         private void button1_Click(object sender, EventArgs e)
         {
             frmCursadaAE frm = new frmCursadaAE(_servicioCursadas) { Text = "Agregar Alumno" };
@@ -95,6 +95,50 @@ namespace InscripcionesDapper.Windows
             catch (Exception ex)
             {
 
+                MessageBox.Show(ex.Message, "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.SelectedRows.Count == 0)
+            {
+                return;
+            }
+            var r = dataGridView1.SelectedRows[0];
+            CursadaDto cursadaDto = (CursadaDto)r.Tag;
+            CursadaDto cursada = _servicioCursadas.Get(cursadaDto.CursadaId);
+            CursadaDto cursadaCopia = (CursadaDto)cursada.Clone();
+
+            try
+            {
+                frmCursadaAE frm = new frmCursadaAE(_servicioCursadas) { Text = "Editar Cursada" };
+                frm.SetCursada(cursada);
+                DialogResult dr = frm.ShowDialog(this);
+                if (dr == DialogResult.Cancel)
+                {
+                    GridHelper.SetearFila(r, cursadaCopia);
+
+                    return;
+                }
+                cursada = frm.GetProveedor();
+                if (cursada != null)
+                {
+                    GridHelper.SetearFila(r, cursada);
+                    MostrarDatosEnGrilla();
+
+                }
+                else
+                {
+                    GridHelper.SetearFila(r, cursadaCopia);
+                    MostrarDatosEnGrilla();
+                }
+            }
+            catch (Exception ex)
+            {
+                GridHelper.SetearFila(r, cursadaCopia);
                 MessageBox.Show(ex.Message, "Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
 

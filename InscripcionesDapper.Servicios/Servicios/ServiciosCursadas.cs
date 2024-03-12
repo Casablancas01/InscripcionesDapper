@@ -20,17 +20,28 @@ namespace InscripcionesDapper.Servicios.Servicios
             {
                 try
                 {
-                    // Realiza operaciones en el repositorio
-                    if (cursada.CursadaId == 0)
-                    {
-                        unitOfWork.Cursadas.Agregar(cursada);
+                    unitOfWork.Cursadas.Guardar(cursada);
+                   
+                    // Más operaciones si es necesario
 
-                    }
-                    else
-                    {
-                        //unitOfWork.Carreras.Editar(carrera);
-
-                    }
+                    unitOfWork.Commit();
+                }
+                catch (Exception ex)
+                {
+                    // Maneja errores y posiblemente realiza un rollback
+                    unitOfWork.Rollback();
+                    unitOfWork.Dispose();
+                    // Log o manejo de errores
+                }
+            }
+        }
+        public void Agregar(Cursada cursada)
+        {
+            using (var unitOfWork = new UnitOfWork(ConfigurationManager.ConnectionStrings["MiConexion"].ToString()))
+            {
+                try
+                {
+                    unitOfWork.Cursadas.Agregar(cursada);
 
                     // Más operaciones si es necesario
 
@@ -130,5 +141,7 @@ namespace InscripcionesDapper.Servicios.Servicios
                 }
             }
         }
+
+        
     }
 }

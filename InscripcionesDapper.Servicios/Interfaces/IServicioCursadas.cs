@@ -13,8 +13,10 @@ namespace InscripcionesDapper.Servicios.Interfaces
         List<CursadaDto> GetAll();
         void Borrar(int cursadaId);
         void Guardar(Cursada cursada);
+        void Agregar(Cursada cursada);
         bool Existe(Cursada cursada);
         CursadaDto Get(int cursadaId);
         int GetCantidadAlumnos(int cursadaId);
+        
     }
 }
